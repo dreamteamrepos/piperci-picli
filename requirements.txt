@@ -2,5 +2,6 @@ anyconfig
 colorama
 click
 marshmallow>=3.0.0rc4
+pbr==5.1.1
 PyYAML
 requests

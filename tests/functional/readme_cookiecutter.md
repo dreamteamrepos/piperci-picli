@@ -7,6 +7,9 @@ pip install --user cookiecutter
 # Generating the template
 
 In a terminal, navigate to a location where you want to deploy the `piedpiper.d` folder
+```
+cd /path/to/picli/tests/functional/my_custom_project
+```
 
 To accept the default values located in cookiecutter.json, run:
 ```

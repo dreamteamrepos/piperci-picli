@@ -1,0 +1,9 @@
+---
+pi_validate_pipe_vars:
+  run_pipe: True
+  url: http://172.17.0.1:8080/function
+  version: latest
+  policy:
+    enabled: True
+    enforcing: True
+    version: 0.0.1

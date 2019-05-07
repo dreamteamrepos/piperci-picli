@@ -1,0 +1,7 @@
+{
+    "global_directory": "piedpiper.d",
+    "project_name": "my_project",
+    "ci_provider": "gitlab-ci",
+    "default_vars_directory": "default_vars.d",
+    "version": "0.0.0"
+}

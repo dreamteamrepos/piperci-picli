@@ -1,0 +1,4 @@
+---
+pi_style:
+  - name: "*.py"
+    styler: flake8

@@ -1,0 +1,12 @@
+---
+run_id: d3831469-15b8-461f-9f94-3b9a71c2df04
+validate:
+  artifacts:
+    python_project.zip:
+      artifact_uri: d3831469-15b8-461f-9f94-3b9a71c2df04/python_project.zip
+      etag: 18281e5aaf671b9c8073278f8707edb6
+      state: uploaded
+      timestamp: '2019-06-04T12:58:19Z'
+  client_task_id: e093e25c-aea9-4def-b121-2d7e101d199e
+  state: completed
+  task_id: f6027bc2-5b73-483f-8309-1b50f7b3d61b

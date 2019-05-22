@@ -29,8 +29,8 @@ class CustomLogger(logging.getLoggerClass()):
 
     def __init__(self, name, level=logging.NOTSET):
         super(logging.getLoggerClass(), self).__init__(name, level)
-        logging.addLevelName(SUCCESS, 'SUCCESS')
-        logging.addLevelName(OUT, 'OUT')
+        logging.addLevelName(SUCCESS, "SUCCESS")
+        logging.addLevelName(OUT, "OUT")
 
     def success(self, msg, *args, **kwargs):
         if self.isEnabledFor(SUCCESS):
@@ -62,8 +62,9 @@ def get_logger(name=None):
     logging.setLoggerClass(CustomLogger)
 
     logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
 
+    logger.addHandler(_get_debug_handler())
     logger.addHandler(_get_info_handler())
     logger.addHandler(_get_out_handler())
     logger.addHandler(_get_warn_handler())
@@ -75,12 +76,22 @@ def get_logger(name=None):
     return logger
 
 
+def _get_debug_handler():
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(logging.DEBUG)
+    handler.addFilter(LogFilter(logging.DEBUG))
+    handler.setFormatter(TrailingNewlineFormatter(grey_text("%(message)s")))
+
+    return handler
+
+
 def _get_info_handler():
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logging.INFO)
     handler.addFilter(LogFilter(logging.INFO))
     handler.setFormatter(
-        TrailingNewlineFormatter('--> {}'.format(cyan_text('%(message)s'))))
+        TrailingNewlineFormatter("--> {}".format(cyan_text("%(message)s")))
+    )
 
     return handler
 
@@ -89,7 +100,7 @@ def _get_out_handler():
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(OUT)
     handler.addFilter(LogFilter(OUT))
-    handler.setFormatter(TrailingNewlineFormatter('    %(message)s'))
+    handler.setFormatter(TrailingNewlineFormatter("    %(message)s"))
 
     return handler
 
@@ -98,7 +109,7 @@ def _get_warn_handler():
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logging.WARN)
     handler.addFilter(LogFilter(logging.WARN))
-    handler.setFormatter(TrailingNewlineFormatter(yellow_text('%(message)s')))
+    handler.setFormatter(TrailingNewlineFormatter(yellow_text("%(message)s")))
 
     return handler
 
@@ -107,7 +118,7 @@ def _get_error_handler():
     handler = logging.StreamHandler(sys.stderr)
     handler.setLevel(logging.ERROR)
     handler.addFilter(LogFilter(logging.ERROR))
-    handler.setFormatter(TrailingNewlineFormatter(red_text('%(message)s')))
+    handler.setFormatter(TrailingNewlineFormatter(red_text("%(message)s")))
 
     return handler
 
@@ -116,8 +127,7 @@ def _get_critical_handler():
     handler = logging.StreamHandler(sys.stderr)
     handler.setLevel(logging.CRITICAL)
     handler.addFilter(LogFilter(logging.CRITICAL))
-    handler.setFormatter(
-        TrailingNewlineFormatter(red_text('ERROR: %(message)s')))
+    handler.setFormatter(TrailingNewlineFormatter(red_text("ERROR: %(message)s")))
 
     return handler
 
@@ -126,7 +136,7 @@ def _get_success_handler():
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(SUCCESS)
     handler.addFilter(LogFilter(SUCCESS))
-    handler.setFormatter(TrailingNewlineFormatter(green_text('%(message)s')))
+    handler.setFormatter(TrailingNewlineFormatter(green_text("%(message)s")))
 
     return handler
 
@@ -147,5 +157,9 @@ def cyan_text(msg):
     return color_text(colorama.Fore.CYAN, msg)
 
 
+def grey_text(msg):
+    return color_text(colorama.Fore.LIGHTBLACK_EX, msg)
+
+
 def color_text(color, msg):
-    return '{}{}{}'.format(color, msg, colorama.Style.RESET_ALL)
+    return "{}{}{}".format(color, msg, colorama.Style.RESET_ALL)

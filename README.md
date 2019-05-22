@@ -30,7 +30,7 @@ Please refer to the README of that repository for further information.
 
 ### Prerequisites
 
-* Python 3.6  
+* Python 3.6 7
 * (Optionally) virtualenv  
 * PiedPiper OpenFaaS functions installed. (See above)
 
@@ -56,31 +56,44 @@ To run PiCli:
 #### Execute a lint
 
 ```
-picli --config path/to/your/repo/piedpier.d/pi_global_vars.yml lint
+picli run --stages=style --clean --wait
 ```
 
 #### Execute a validation
 
 ```
-picli --config path/to/your/repo/piedpier.d/pi_global_vars.yml validate
+picli run --stages=validate --clean --wait
 ```
 
 ### CLI Arguments
 
 **debug**
 ```
-picli --debug validate
+picli --debug run
 ```
 Debug will dump PiCli's run_vars to the screen during execution. This allows
 the user to validate PiCli's configuration that is being sent to the
 various functions. 
 
+**run**
+```
+picli run
+```
+The main entrypoint to PiCli. This will execute the stages defined in your stages.yml file
+by sending HTTP requests to the resources you have provided.
+
+**display**
+```
+picli display
+```
+Display job results from the commandline. This will read your local state file for the taskID of each stage,
+query GMan for job status, and then download artifacts for each job.
+
 ## Running the tests
 
-Currently we just have functional tests and linting tests. These require an OpenFaaS installation. The test script
-can be found in tests/functional/run-tests.sh
-
 To run the lint tests use tox: `tox -e lint`
+
+To run the unit tests use tox: `tox -e unit`
 
 
 ## Contributing

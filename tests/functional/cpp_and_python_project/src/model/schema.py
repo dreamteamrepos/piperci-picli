@@ -2,6 +2,7 @@ import marshmallow
 
 from charon.model import base
 
+
 class RequestSchema(base.Base):
     image_uuids = marshmallow.fields.List(marshmallow.fields.Str())
     source_project_id = marshmallow.fields.Str()
@@ -14,14 +15,15 @@ class CloudSchema(base.Base):
     username = marshmallow.fields.Str()
 
 
-
 class NotificationMattermostAuthenticationSchema(base.Base):
     access_token = marshmallow.fields.Str()
 
 
 class NotificationMattermostSchema(base.Base):
     name = marshmallow.fields.Str()
-    authentication = marshmallow.fields.Dict(values=marshmallow.fields.Nested(NotificationMattermostAuthenticationSchema))
+    authentication = marshmallow.fields.Dict(
+        values=marshmallow.fields.Nested(NotificationMattermostAuthenticationSchema)
+    )
     url = marshmallow.fields.Str()
     verify = marshmallow.fields.Boolean()
 
@@ -35,7 +37,9 @@ class ScannerNessusAuthenticationSchema(base.Base):
 class ScannerNessusSchema(base.Base):
     name = marshmallow.fields.Str()
     compliance_threshold = marshmallow.fields.Str()
-    authentication = marshmallow.fields.Dict(values=marshmallow.fields.Nested(ScannerNessusAuthenticationSchema))
+    authentication = marshmallow.fields.Dict(
+        values=marshmallow.fields.Nested(ScannerNessusAuthenticationSchema)
+    )
     verify = marshmallow.fields.Boolean()
     policy_id = marshmallow.fields.Str()
 
@@ -55,8 +59,7 @@ class CharonMattermostSchema(CharonBaseSchema):
 
 
 def validate(c):
-    if c['scanner']['name'] == 'nessus':
+    if c["scanner"]["name"] == "nessus":
         schema = CharonNessusSchema(strict=True)
 
-    
     return schema.load(c)

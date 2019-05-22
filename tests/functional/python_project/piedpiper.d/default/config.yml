@@ -1,0 +1,9 @@
+---
+project_name: "python_project"
+version: "0.0.0"
+gman_url: "http://172.17.0.1:8089/gman"
+faas_endpoint: "http://172.17.0.1:8080"
+storage:
+  url: "172.17.0.1:9000"
+  access_key: "1EPHH13NICEJ119QPGL6"
+  secret_key: "TKKUm6IAVPgAv8N++4BICQSJD5DPQqQNcuy1+k6t"

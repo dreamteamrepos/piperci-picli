@@ -4,6 +4,7 @@ __metaclass__ = type
 
 try:
     import pkg_resources
-    __version__ = pkg_resources.get_distribution('picli').version
+
+    __version__ = pkg_resources.get_distribution("picli").version
 except Exception:
-    __version__ = 'unknown'
+    __version__ = "unknown"

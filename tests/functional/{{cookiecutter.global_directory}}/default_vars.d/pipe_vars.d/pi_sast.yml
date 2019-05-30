@@ -1,0 +1,5 @@
+---
+pi_sast_pipe_vars:
+  run_pipe: true
+  url: http://172.17.0.1:8080/function
+  version: latest

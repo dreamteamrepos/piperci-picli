@@ -1,0 +1,6 @@
+---
+pi_global_vars:
+  project_name: "{{cookiecutter.project_name}}"
+  ci_provider: "{{cookiecutter.ci_provider}}"
+  vars_dir: "{{cookiecutter.default_vars_directory}}"
+  version: "{{cookiecutter.version}}"

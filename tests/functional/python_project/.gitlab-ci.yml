@@ -9,6 +9,8 @@ stages:
 include:
   - project: piedpiper/validation
     file: .gitlab-ci.yml
+  - project: piedpiper/style
+    file: .gitlab-ci.yml
 
 
 variables:

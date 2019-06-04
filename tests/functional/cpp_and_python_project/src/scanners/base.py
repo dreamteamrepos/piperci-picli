@@ -1,11 +1,11 @@
 import abc
 
+
 class Base(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, config):
         self._config = config
-
 
     @abc.abstractmethod
     def start_scan(self):

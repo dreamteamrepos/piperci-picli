@@ -1,11 +1,12 @@
 import abc
 
+
 class Base(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, config):
         self._config = config
-        
+
     @abc.abstractmethod
     def __enter__(self):
         pass
@@ -27,14 +28,14 @@ class Base(object):
         Start an instance
         """
         pass
-    
+
     @abc.abstractmethod
     def get_instance_status(self):
         """
         Get status of an instance 
         """
         pass
-    
+
     @abc.abstractmethod
     def get_instance_ip(self):
         """

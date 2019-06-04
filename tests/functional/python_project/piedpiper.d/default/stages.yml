@@ -1,0 +1,56 @@
+---
+stages:
+  - name: validate
+    deps:
+    resources:
+      - name: validate
+        uri: /function/piedpiper-validator-gateway
+    config:
+      - resource: validate
+        policy_version: 0.0.0
+  - name: style
+    deps:
+      - validate
+    resources:
+      - name: flake8
+        uri: /function/piedpiper-flake8-gateway
+    config:
+      - files: "*.py"
+        resource: flake8
+      - files: "charon/model/*"
+        resource: flake8
+        exclude: true
+  - name: sast
+    deps:
+      - validate
+    resources:
+      - name: noop
+        uri: /function/piedpiper-noop-gateway
+    config:
+      - files: "*"
+        resource: noop
+  - name: unit
+    deps:
+    resources:
+      - name: noop
+        uri: /function/piedpiper-noop-gateway
+    config:
+      - resource: noop
+        tox_arguments: -e unit
+  - name: build
+    deps:
+    resources:
+      - name: noop
+        uri: /function/piedpiper-noop-gateway
+    config:
+      - target: "Dockerfile"
+        resource: noop
+  - name: package
+    deps:
+      - build
+    resources:
+      - name: noop
+        uri: /function/piedpiper-noop-gateway
+    config:
+      - files: "*"
+        resource: noop

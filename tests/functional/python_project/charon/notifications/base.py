@@ -1,5 +1,6 @@
 import abc
 
+
 class Base(object):
     __metaclass__ = abc.ABCMeta
 
@@ -13,4 +14,3 @@ class Base(object):
         Param: Message
         """
         pass
-

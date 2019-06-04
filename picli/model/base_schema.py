@@ -2,32 +2,24 @@ from marshmallow import fields
 from marshmallow import Schema
 from marshmallow import RAISE
 from marshmallow import ValidationError
-from marshmallow import validates
 
 
-class PiGlobalVarsSchema(Schema):
+class StorageSchema(Schema):
+    url = fields.Str(required=True)
+    access_key = fields.Str(required=True)
+    secret_key = fields.Str(required=True)
+
+
+class ConfigSchema(Schema):
     project_name = fields.Str(required=True)
-    ci_provider = fields.Str(required=True)
-    vars_dir = fields.Str(required=True)
     version = fields.Str(required=True)
-
-    @validates
-    def validate_ci_provider(self, value):
-        allowed_ci_providers = [
-            'gitlab-ci'
-        ]
-        if value not in allowed_ci_providers:
-            raise ValueError(
-                f'ci_provider must be one of {allowed_ci_providers}. You supplied {value}'
-            )
-
-
-class BaseSchema(Schema):
-    pi_global_vars = fields.Nested(PiGlobalVarsSchema)
+    gman_url = fields.Str(required=True)
+    faas_endpoint = fields.Str(required=True)
+    storage = fields.Nested(StorageSchema)
 
 
 def validate(config):
-    schema = BaseSchema(unknown=RAISE)
+    schema = ConfigSchema(unknown=RAISE)
     try:
         _ = schema.load(config)
         result = None

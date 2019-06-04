@@ -6,6 +6,8 @@
 Welcome to PiedPiper-PiCli's documentation!
 ============================================
 
+OUT OF DATE
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

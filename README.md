@@ -2,14 +2,17 @@ ToDo:
 Document more things
 
 # PiCli
+[![Build Status](https://travis-ci.org/AFCYBER-DREAM/piedpiper-picli.svg?branch=master)](https://travis-ci.org/AFCYBER-DREAM/piedpiper-picli)
 
 PiCli is a python client for PiedPiper, a CI-pipeline validation framework.
 
-Additional documentation for PiedPiper can be found here: (https://piedpiper-picli.readthedocs.io/en/latest/)
+Additional documentation for PiedPiper can be found here:
+(https://piedpiper-picli.readthedocs.io/en/latest/)
 
 ## Getting Started
 
-A local development environment can be configured using the following Ansible collection: https://github.com/AFCYBER-DREAM/ansible-collection-pidev/
+A local development environment can be configured using the following Ansible
+collection: (https://github.com/AFCYBER-DREAM/ansible-collection-pidev/)
 
 Follow these instructions to turn a new machine into a PiedPiper development environment:
 
@@ -26,14 +29,14 @@ env="ubuntu1804/dockerswarm+openfaas"
 # once you have set these three variables, run this command as `root` (not a sudo user):
 bash <(curl -s https://raw.githubusercontent.com/${org}/${repo}/master/bootstrap.sh) ${org}/${repo} ${env}
 ```
-Please refer to the README of that repository for further information.
+
+Please refer to the `README` of that repository for further information.
 
 ### Prerequisites
 
-* Python 3.6  
-* (Optionally) virtualenv  
+* Python 3.6
+* (Optionally) virtualenv
 * PiedPiper OpenFaaS functions installed. (See above)
-
 
 ### Installing
 
@@ -73,31 +76,37 @@ picli --debug validate
 ```
 Debug will dump PiCli's run_vars to the screen during execution. This allows
 the user to validate PiCli's configuration that is being sent to the
-various functions. 
+various functions.
 
 ## Running the tests
 
-Currently we just have functional tests and linting tests. These require an OpenFaaS installation. The test script
-can be found in tests/functional/run-tests.sh
+Currently we just have functional tests and linting tests. These require an
+OpenFaaS installation. The test script can be found in
+`tests/functional/run-tests.sh`
 
 To run the lint tests use tox: `tox -e lint`
 
-
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read
+[CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for
+details on our code of conduct, and the process for submitting pull requests to
+us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available,
+see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of
+[contributors](https://github.com/your/project/contributors) who participated
+in this project.
 
 ## License
 
-TBD
+MIT
 
 ## Acknowledgments
 

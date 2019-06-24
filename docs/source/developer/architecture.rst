@@ -10,9 +10,9 @@ Architecture
 
 PiedPiper is designed around the concept of pipes. Each phase in the CI/CD
 pipeline is considered a ``pipe``. Each ``pipe`` has its own configuration
-options, runtime environment, and invokation. PiedPiper's main configuration
-interface is made available through YAML files inside of the ``piedpiper.d/``
-directory which lives in your software project's repository.
+options, runtime environment, and invocation. PiedPiper's main configuration
+interface is available through YAML files inside of the ``piedpiper.d/``
+directory, which lives in your software project's repository.
 
 The architecture of PiedPiper is split into two main components:
   - The `PiCli`_ client and
@@ -41,11 +41,11 @@ Some examples of these remote functions are:
   - https://github.com/AFCYBER-DREAM/piedpiper-flake8-faas
   - https://github.com/AFCYBER-DREAM/piedpiper-cpplint-faas
 
-These functions serve as an HTTP API wrapper around the chosen tool. The goal of Piedpiper is simply wrap
+These functions serve as an HTTP API wrapper around the chosen tool. The goal of PiedPiper is simply wrap
 these external tools and return all output. We do not want to get in the way of developers and their normal
 interactions with these popular tools.
 
-The validation function however is special. This function provides the mechanism for validating CI configurations via
+The validation function, however, is special. This function provides the mechanism for validating CI configurations via
 another Git repository. For more information on how this function works please see the `README`_
 
 .. _README: https://github.com/AFCYBER-DREAM/piedpiper-validator-faas/blob/master/README.md
@@ -56,7 +56,7 @@ OpenFaaS
 
 OpenFaaS is an integral component to PiedPiper because of its role in hosting the remote functions
 which PiCli calls. While OpenFaaS itself isn't a requirement, something must act as a remote execution
-environment which implements an API that Piedpiper expects. This definition of this API and the
+environment which implements an API that PiedPiper expects. This definition of this API and the
 requests and response which PiCli expects can be found in the `PiedPiper API`_ section.
 
 
@@ -101,7 +101,7 @@ a specific pipe, file, or group.
   any direct child directory under ``piedpiper.d``. 
   The intention of this directory is to allow developers to create a clone of 
   the Piedpiper configuration to test various variable changes or different 
-  versions of it's pipelines without modifying the production variables.
+  versions of its pipelines without modifying the production variables.
 
 **ci_provider**
   This configuration option informs PiedPiper what CI provider is being used.
@@ -125,7 +125,7 @@ default_vars.d/group_vars.d/
 
 This directory contains group-specific configurations for pipelines.
 Each file in this directory is considered a "group" and will be fed into 
-PiedPiper as a Run. By default we provide an ``all.yml`` file which 
+PiedPiper as a "run." By default, we provide an ``all.yml`` file which 
 defines a ``noop`` operation for every pipeline that PiedPiper manages.
 
 This is the default ``all.yml`` file which is provided when bootstraping

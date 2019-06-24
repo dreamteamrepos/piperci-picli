@@ -53,7 +53,7 @@ Ensure that python3.7 is installed, then create a new virtualenv using python3.7
 
   virtualenv -p python3.7 picli
 
-Next active your virtualenv
+Next activate your virtualenv
 
 .. code-block:: bash
 
@@ -72,13 +72,13 @@ Prerequisites
 
 * Docker
 
-
+To run the client from a Docker container with access to your current working directory, do the following:
 
 .. code-block:: bash
 
-  docker run -v $(pwd):/code -it piedpiper-picli:latest /bin/sh
-  cd /code
-  picli --help
+  $ docker run -v $(pwd):/code -it piedpiper-picli:latest /bin/sh
+  # cd /code
+  # picli --help
   /code # picli --help
   Usage: picli [OPTIONS] COMMAND [ARGS]...
 

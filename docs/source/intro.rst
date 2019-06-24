@@ -3,27 +3,16 @@
 Introduction to PiedPiper
 =========================
 
-PiedPiper is a managed Pipeline validation and execution framework. 
+PiedPiper is a managed pipeline validation and execution framework. PiedPiper gives the developer tools to
+ensure all changes are validated against the same infrastructure that is enforced by the CI/CD pipeline and
+enables managerial entities to programmatically enforce specific pipeline steps and configurations for each project
+that they oversee.
 
-The problem Piedpiper is trying to solve is two-fold.
+The intention is to give developers the ability to quickly bootstrap a project with a set of pipeline configurations 
+that will run through the full pipeline. 
 
-1. How does a developer ensure their change will be accepted by the CI framework
-   without making a commit?
-
-2. How can a managerial entity enforce specific pipeline steps and configurations
-   for each project that they oversee? 
-
-PiedPiper was created to help solve these two problems. The intention is to give developers
-the ability to quickly bootstrap a project with a set of pipeline configurations that will
-run through the full pipeline. Piedpiper is the framework which will help achieve these two
-stated goals.
-
-The ``picli`` is the entrypoint to PiedPiper. This is the commandline client used by developers
-and CI platforms which will provide a standard interface into the CI/CD system. ``picli`` was
-created to ensure that developers could test their changes before making commits to a repository
-and be fairly confident that a change would make its way through the CI system. Additionally, ``picli``
-allows for a set of validations to be applied to the CI platform configuration which can be 
-used to enforce specific settings and/or steps.
+The ``picli`` is the entrypoint to PiedPiper. It is the common interface into the CI/CD systems that are managed and
+is expected to be used by both the developer and CI platforms.
 
 .. note::
     To find more information on the architecture of PiedPiper see the :ref:`Architecture Guide<architecture>`.
